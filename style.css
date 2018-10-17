@@ -1,0 +1,75 @@
+html, body {
+    width: 100%;
+    margin: 0;
+}
+
+.slide {
+    font-family: Helvetica, sans-serif;
+    background-color: #222222;
+    color: #dddddd;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 3%;
+}
+
+::selection {
+    background-color: #dddddd;
+    color: #00aaff;
+}
+
+a {
+    color: #dddddd;
+    text-decoration-color: #00aaff;
+}
+
+a:hover { text-decoration-color: #ffaa00; }
+
+h1, h2, h3, h4 {
+    text-align: center;
+    margin: 0px;
+    padding-bottom: 5vh;
+}
+h1 { font-size: 10vh; padding-top: 15vh; }
+h2 { font-size: 8vh; }
+h3 { font-size: 6vh; }
+h4 { font-size: 4vh; }
+h1 + h3 { padding: 0 0 8vh 0; }
+h1 + * { padding-top: 15vh; }
+
+p, li, td, th {
+    font-size: 5vh;
+    line-height: 150%;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+thead, tr:nth-child(even) {
+    background-color: #181818;
+}
+
+pre, code, blockquote {
+    font-size: 4vh;
+    background-color: #181818;
+    border-radius: 1vh;
+    padding: 1vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+pre, code {
+    font-family: Consolas, monospace;
+    white-space: pre-wrap;
+}
+
+blockquote, blockquote p {
+    margin: 0;
+    font-style: italic;
+}
+
+pre .pl-k { color: #ffaa00; }
+pre .pl-en { color: #00aaff; }
+
+ul, ol { margin: 0px auto 0px auto; }
