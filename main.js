@@ -74,6 +74,9 @@ const displaySlides = function (markdown) {
         document
             .querySelectorAll('input[type=checkbox]')
             .forEach(node => node.disabled = false);
+        document
+            .querySelectorAll('a[href]')
+            .forEach(node => node.target = '_blank');
 
         let slideIndex = 1;
         window.addEventListener('keypress', function (event) {
