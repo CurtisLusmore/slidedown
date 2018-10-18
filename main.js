@@ -112,6 +112,5 @@ const processHash = function (hash) {
 };
 
 const params = new URLSearchParams(window.location.search);
-const hash = params.get('hash');
-
-if (hash) processHash(hash);
+const hash = params.get('hash') || 'b1720b66a1e9afe1c942d1f03b3f5772';
+processHash(hash);
