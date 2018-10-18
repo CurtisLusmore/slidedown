@@ -62,11 +62,13 @@ const displaySlides = function (markdown) {
         let slideIndex = 1;
         window.addEventListener('keypress', function (event) {
             switch (event.key) {
+                case 'ArrowRight':
                 case 'ArrowDown': {
                     if (slideIndex < numSlides) slideIndex++;
                     event.preventDefault();
                     break;
                 }
+                case 'ArrowLeft':
                 case 'ArrowUp': {
                     if (slideIndex > 1) slideIndex--;
                     event.preventDefault();
@@ -74,6 +76,25 @@ const displaySlides = function (markdown) {
                 }
                 default:
                     return;
+            }
+            window.location.hash = '#slide-' + slideIndex;
+        });
+        let scrolling = false;
+        window.addEventListener('wheel', function (event) {
+            event.preventDefault();
+            if (!scrolling && event.deltaY > 0) {
+                if (slideIndex < numSlides) {
+                    slideIndex++;
+                    scrolling = true;
+                    setTimeout(() => scrolling = false, 200);
+                }
+            }
+            if (!scrolling && event.deltaY < 0) {
+                if (slideIndex > 1) {
+                    slideIndex--;
+                    scrolling = true;
+                    setTimeout(() => scrolling = false, 200);
+                }
             }
             window.location.hash = '#slide-' + slideIndex;
         });
