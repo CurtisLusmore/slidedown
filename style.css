@@ -12,6 +12,15 @@ html, body {
     padding: 3%;
 }
 
+#black {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 100%;
+    background-color: #222222;
+}
+
 ::selection {
     background-color: #dddddd;
     color: #00aaff;
@@ -73,3 +82,8 @@ pre .pl-k { color: #ffaa00; }
 pre .pl-en { color: #00aaff; }
 
 ul, ol { margin: 0px auto 0px auto; }
+
+input[type=checkbox] {
+    height: 3vh;
+    width: 3vh;
+}

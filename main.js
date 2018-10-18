@@ -20,6 +20,9 @@ const div = function (className=undefined, id=undefined) {
     return d;
 };
 
+const main = document.getElementById('main');
+const black = document.getElementById('black');
+
 const displaySlides = function (markdown) {
     const data = {
         text: markdown,
@@ -31,6 +34,7 @@ const displaySlides = function (markdown) {
         const slides = div();
         let numSlides = 0;
         let slide = div('slide', 'slide-' + ++numSlides);
+        let title = null;
         [...orig.childNodes].forEach(node => {
             switch (node.tagName) {
                 case 'HR': {
@@ -45,9 +49,17 @@ const displaySlides = function (markdown) {
                     break;
                 }
                 case 'DIV': {
-                    if (node.firstChild.tagName === 'PRE')
+                    if (node.firstChild.tagName === 'PRE') {
                         node.firstChild.contentEditable = true;
                         node.firstChild.spellcheck = false;
+                    }
+                    slide.appendChild(node);
+                    break;
+                }
+                case 'H1': {
+                    if (!title) title = node.innerText;
+                    slide.appendChild(node);
+                    break;
                 }
                 default: {
                     slide.appendChild(node);
@@ -57,7 +69,11 @@ const displaySlides = function (markdown) {
         });
         slides.appendChild(slide);
 
+        document.title = title;
         main.innerHTML = slides.innerHTML;
+        document
+            .querySelectorAll('input[type=checkbox]')
+            .forEach(node => node.disabled = false);
 
         let slideIndex = 1;
         window.addEventListener('keypress', function (event) {
@@ -71,6 +87,13 @@ const displaySlides = function (markdown) {
                 case 'ArrowLeft':
                 case 'ArrowUp': {
                     if (slideIndex > 1) slideIndex--;
+                    event.preventDefault();
+                    break;
+                }
+                case 'b': {
+                    black.style.display = black.style.display === 'none'
+                        ? 'block'
+                        : 'none';
                     event.preventDefault();
                     break;
                 }
